@@ -24,8 +24,9 @@ There are 16 options for nucleotide encoding, see [here](https://www.bioinformat
 
 
 ## Papers
- *
- *
- *
+ * [Biological Sequence Compression Algorithms](https://www.jsbi.org/pdfs/journal1/GIW00/GIW00F05.pdf)
+ * [SeqCompress: An algorithm for biological sequence compression](https://www.sciencedirect.com/science/article/pii/S0888754314001499)
+ * [A Survey on Data Compression Methods for Biological Sequences](https://www.mdpi.com/2078-2489/7/4/56/htm)
+ * [MFCompress: a compression tool for FASTA and multi-FASTA data](https://academic.oup.com/bioinformatics/article/30/1/117/236841)
 
   List is coming
