@@ -34,3 +34,4 @@ There are 16 options for nucleotide encoding, see [here](https://www.bioinformat
   * Write sequence parser.
   * Write byte parser.
   * Figure out how to determine file size accurately.
+  * Think of other name than SeqCompress.
