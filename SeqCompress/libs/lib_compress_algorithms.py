@@ -3,13 +3,16 @@ encoding = {'A': '0000', 'C': '0001', 'G': '0010', 'T': '0011',
             'K': '1000', 'M': '1001', 'B': '1010', 'D': '1011',
             'H': '1100', 'V': '1101', 'N': '1110', '.': '1111'}
 
-def compress_4bit(sequence: str): -> str
+def compress_4bit(sequence: str) -> str:
+    binary = []
+    for nucleotide in sequence:
+        binary.append(encoding.get(nucleotide))
+    return "".join(binary)
+
+
+def compress_5bit(sequence: str) -> str:
     pass
 
 
-def compress_5bit(sequence: str): -> str
-    pass
-
-
-def compress_numeric(sequence: str): -> str
+def compress_numeric(sequence: str) -> str:
     pass
