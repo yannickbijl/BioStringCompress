@@ -15,4 +15,13 @@ def compress_5bit(sequence: str) -> str:
 
 
 def compress_numeric(sequence: str) -> str:
-    pass
+    seq = []
+    prev = None
+    count = 0
+    for nucleotide in sequence:
+        if prev == None or prev != nucleotide:
+            seq.append(nucleotide + str(count))
+            prev = nucleotide
+        else:
+            count + 1
+    return "".join(seq)
