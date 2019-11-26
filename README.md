@@ -1,5 +1,19 @@
-# SeqCompress
+# BioStringCompress (BSC)
  Efficient compression of biological sequences for long term storage.
+
+## ROADMAP/TODO
+ * Early decisions:
+    * How do we want to publish the software? -> package, cmd-tool, GUI, loose scripts?
+    * Do we want to incorporate analysis tools in the software? Can be separate for paper/report.
+    * How do we want to organize ourselves? Further discussion needed, perhaps useful for future projects.
+ * Learn how to write string of 0 and 1 to byte, and read byte as string of 0 and 1.
+ * All the stuff
+ * Late decisions
+    * Do we want to publish a paper about this? Contact Fons Verbeek about this if needed.
+    * Do we want to continue collaboration together? -> In which form? What kind of commitments?
+    * Do we want to continue with this kind of research? -> Compression through AutoEncoders? Use of Graph Theory?
+    * Do we want to start other projects? -> What project?
+
 
 ## 3 (de)compression methods
 Normally all bases are stored using 8-bit characters.
@@ -28,10 +42,3 @@ There are 16 options for nucleotide encoding, see [here](https://www.bioinformat
  * [SeqCompress: An algorithm for biological sequence compression](https://www.sciencedirect.com/science/article/pii/S0888754314001499)
  * [A Survey on Data Compression Methods for Biological Sequences](https://www.mdpi.com/2078-2489/7/4/56/htm)
  * [MFCompress: a compression tool for FASTA and multi-FASTA data](https://academic.oup.com/bioinformatics/article/30/1/117/236841)
-
- ## TODO
-  * Figure out how to save strings of 1 and 0 to actual bytes.
-  * Write sequence parser.
-  * Write byte parser.
-  * Figure out how to determine file size accurately.
-  * Think of other name than SeqCompress.
