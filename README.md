@@ -2,17 +2,26 @@
  Efficient compression of biological sequences for long term storage.
 
 ## ROADMAP/TODO
- * Early decisions:
-    * How do we want to publish the software? -> package, cmd-tool, GUI, loose scripts?
-    * Do we want to incorporate analysis tools in the software? Can be separate for paper/report.
-    * How do we want to organize ourselves? Further discussion needed, perhaps useful for future projects.
- * Learn how to write string of 0 and 1 to byte, and read byte as string of 0 and 1.
- * All the stuff
- * Late decisions
-    * Do we want to publish a paper about this? Contact Fons Verbeek about this if needed.
-    * Do we want to continue collaboration together? -> In which form? What kind of commitments?
-    * Do we want to continue with this kind of research? -> Compression through AutoEncoders? Use of Graph Theory?
-    * Do we want to start other projects? -> What project?
+ - [ ] Early decisions:
+   > Q: How do we want to publish the software? -> package, cmd-tool, GUI, loose scripts  
+     A: ...., because ....
+
+   > Q: Do we want to incorporate analysis tools in the software? Can be separate for paper/report.  
+     A: No, as the analysis is only useful for the research and development. Not actual use of compression.
+
+   >Q: How do we want to organize ourselves? Further discussion needed, perhaps useful for future projects.  
+    A: ...
+ - [ ] Learn how to write string of 0 and 1 to byte, and read byte as string of 0 and 1.
+ - [ ] All the stuff
+ - [ ] Late decisions
+   > Q: Do we want to publish a paper about this? Contact Fons Verbeek about this if needed.  
+     A:
+
+   > Q: Do we want to continue collaboration together? -> In which form? What kind of commitments?
+     A: 
+
+   > Q: Do we want to continue with this kind of research? -> Compression through AutoEncoders? Use of Graph Theory?
+     A: Do we want to start other projects? -> What project?
 
 
 ## 3 (de)compression methods
