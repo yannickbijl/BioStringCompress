@@ -58,8 +58,8 @@ def main():
         lib_data.write_binary(out_data, args.output)
     else:
         in_data = lib_data.read_binary(args.input)
-        out_data = compress_data(in_data, args.method)
-        lib_data.write_binary(out_data, args.output)
+        out_data = decompress_data(in_data, args.method)
+        lib_data.write_normal(out_data, args.output)
 
     logger.info("Successfully excecuted program 'BioStringCompress'.")
 
