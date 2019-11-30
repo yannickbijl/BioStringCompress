@@ -2,27 +2,30 @@
  Efficient compression of biological sequences for long term storage.
 
 ## ROADMAP/TODO
- - [ ] Early decisions:
+ - [x] Early decisions:
    > Q: How do we want to publish the software? -> package, cmd-tool, GUI, loose scripts  
-     A: ...., because ....
+     A: cmd-tool, because the use case allows for incorporation into pipelines without the hassle of creating own read and write methods by user.
 
    > Q: Do we want to incorporate analysis tools in the software? Can be separate for paper/report.  
      A: No, as the analysis is only useful for the research and development. Not actual use of compression.
 
-   >Q: How do we want to organize ourselves? Further discussion needed, perhaps useful for future projects.  
-    A: ...
+   > Q: How do we want to organize ourselves? Further discussion needed, perhaps useful for future projects.  
+     A: Code + Docs is maintained through Github. Official communication through Discord. Meetings on demand. Give notice when worked on project through official communication channels.
+
+   > Q: How do we want to report program progress?  
+     A: Logging + `raise errors`.
+
  - [ ] Learn how to write string of 0 and 1 to byte, and read byte as string of 0 and 1.
  - [ ] All the stuff
  - [ ] Late decisions
    > Q: Do we want to publish a paper about this? Contact Fons Verbeek about this if needed.  
-     A:
+     A: Yes, we will see if we can do all this on time.
 
-   > Q: Do we want to continue collaboration together? -> In which form? What kind of commitments?
+   > Q: Do we want to continue collaboration together? -> In which form? What kind of commitments?  
      A: 
 
-   > Q: Do we want to continue with this kind of research? -> Compression through AutoEncoders? Use of Graph Theory?
+   > Q: Do we want to continue with this kind of research? -> Compression through AutoEncoders? Use of Graph Theory?  
      A: Do we want to start other projects? -> What project?
-
 
 ## 3 (de)compression methods
 Normally all bases are stored using 8-bit characters.
@@ -44,7 +47,6 @@ There are 16 options for nucleotide encoding, see [here](https://www.bioinformat
  * a gene
  * a chromosome
  * a genome
-
 
 ## Papers
  * [Biological Sequence Compression Algorithms](https://www.jsbi.org/pdfs/journal1/GIW00/GIW00F05.pdf)
