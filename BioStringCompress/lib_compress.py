@@ -18,7 +18,7 @@ def bitConversion(intConvBase):
     
 def method1(): # Previously defa
     allBases = ["A", "C", "G", "T", "R", "Y", "S", "W", "K", "M", "B", "D", 
-                "M", "V", "N", "-"]
+                "H", "V", "N", "-"]
     dictBases = strToIntDict(allBases)
     #print(dictBases)
     sequenceBases = "ACTG" # dummy sequence
