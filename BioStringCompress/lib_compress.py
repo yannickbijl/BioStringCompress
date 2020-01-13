@@ -39,18 +39,18 @@ def method2(sequence:str = "ATCG"):
     return seqList # Each 2 items in seqList forms a pair. First item is the base, and second item is the count.
 
 
-def method3():
+def method3(sequence:str = "ATCG"):
     bitList = []
     dictBases = strToIntDict()
     prevChar = seq[0]
     count = 0 
     for character in sequence:
-        if prevChar == character and count < 16: # max of 15 to work with bits.
+        if prevChar == character and count < 17: # max of 16 to work with bits.
             count += 1
         else:
             intBase = charToInt(prevChar, dictBases)
             bitList.append(bitConversion(intBase))
-            bitList.append(bitConversion(intBase))
+            bitList.append(bitConversion(count-1))
             prevChar = character
             count = 1
     return bitList # Each 2 items in bitList form a byte. First item is the base, and second item is the count.
