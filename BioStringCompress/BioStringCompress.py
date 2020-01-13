@@ -28,11 +28,11 @@ def compress_data(data, method):
 def decompress_data(data, method):
     logger.info(f'Data is decompressed using the method "{method}".')
     if method == 'a':
-        return lib_decompress.a(data)
+        return lib_decompress.method1(data)
     elif method == 'b':
-        return lib_decompress.b(data)
+        return lib_decompress.method2(data)
     elif method == 'c':
-        return lib_decompress.c(data)
+        return lib_decompress.method3(data)
     else:
         logger.debug(f'The method "{method}" has not been implemented for decompression.')
         raise lib_exceptions.FeatureNotImplemented(f'The method "{method}" has not been implemented for compression.')
@@ -52,12 +52,18 @@ def main():
                         , default='a', choices=['a', 'b', 'c'], help="")
     args = parser.parse_args()
 
-    if args.direction:
+    if args.direction: # Compression
         in_data = lib_data.read_normal(args.input)
         out_data = compress_data(in_data, args.method)
-        lib_data.write_binary(out_data, args.output)
-    else:
-        in_data = lib_data.read_binary(args.input)
+        if args.method in ['a', 'c']:
+            lib_data.write_binary(out_data, args.output)
+        else:
+            lib_data.write_normal(out_data, args.output)
+    else: # Decompression
+        if args.method in ['a', 'c']:
+            in_data = lib_data.read_binary(args.input)
+        else:
+            in_data = lib_data.read_normal(args.input)
         out_data = decompress_data(in_data, args.method)
         lib_data.write_normal(out_data, args.output)
 
