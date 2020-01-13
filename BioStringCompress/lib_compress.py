@@ -1,34 +1,56 @@
-def strToIntDict(allBases):
-    #d = {'-': 1, 'A': 2, 'B': 3, 'C': 4, 'D': 5, 'G': 6, 'K': 7, 'M': 8, 
-    #     'N': 9, 'R': 10, 'S': 11, 'T': 12, 'V': 13, 'W': 14, 'Y': 15}
-    d = dict([(y,x+1) for x,y in enumerate(sorted(set(allBases)))])
-    return(d)
-
-def strToInt(sequenceBase, dictBases):
-    sequenceInt = []
-    for key in list(dictBases.keys()): 
-        for base in sequenceBase:
-            if base == key:
-                sequenceInt.append(dictBases[key])
-    return(sequenceInt)
-
-def bitConversion(intConvBase):
-    bitBase = '{:04b}'.format(intConvBase)
-    return(bitBase)
-    
-def method1(): # Previously defa
+def charToIntDict():
     allBases = ["A", "C", "G", "T", "R", "Y", "S", "W", "K", "M", "B", "D", 
                 "H", "V", "N", "-"]
-    dictBases = strToIntDict(allBases)
-    #print(dictBases)
-    sequenceBases = "ACTG" # dummy sequence
-    #print(strToInt(sequenceBases, dictBases))
+    d = dict([(y,x) for x,y in enumerate(sorted(set(allBases)))])
+    # d = {'-': 0, 'A': 1, 'B': 2, 'C': 3, 'D': 4, 'G': 5, 'H': 6, 'K': 7, 'M': 8, 'N': 9, 'R': 10, 'S': 11, 'T': 12, 'V': 13, 'W': 14, 'Y': 15}
+    return d
+
+def charToInt(character:str, dictBases:dict):
+    return dictBases[character]
+
+def bitConversion(intConvBase: int):
+    return '{:04b}'.format(intConvBase)
 
 
+def method1(sequence:str = "ATCG"):
+    bitList = []
+    dictBases = charToIntDict()
+    for character in sequence:
+        intBase = charToInt(character, dictBases)
+        bitList.append(bitConversion(intBase))
+    if (len(bitList) % 2) > 0: # Add padding if necessary with a gap.
+        bitList.append(bitConversion(0))
+    return bitList # Each 2 items in bitList forms a byte.
 
-def b():
-    return 1
+
+def method2(sequence:str = "ATCG"):
+    seqList = []
+    dictBases = strToIntDict()
+    prevChar = seq[0]
+    count = 0 
+    for character in sequence:
+        if prevChar == character:
+            count += 1
+        else:
+            seqList.append(prevChar)
+            seqList.append(count)
+            prevChar = character
+            count = 1
+    return seqList # Each 2 items in seqList forms a pair. First item is the base, and second item is the count.
 
 
-def c():
-    return 1
+def method3():
+    bitList = []
+    dictBases = strToIntDict()
+    prevChar = seq[0]
+    count = 0 
+    for character in sequence:
+        if prevChar == character and count < 16: # max of 15 to work with bits.
+            count += 1
+        else:
+            intBase = charToInt(prevChar, dictBases)
+            bitList.append(bitConversion(intBase))
+            bitList.append(bitConversion(intBase))
+            prevChar = character
+            count = 1
+    return bitList # Each 2 items in bitList form a byte. First item is the base, and second item is the count.
