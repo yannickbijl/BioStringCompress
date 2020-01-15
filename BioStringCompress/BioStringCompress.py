@@ -40,18 +40,19 @@ def main():
     logger.info("Start program 'BioStringCompress'.")
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--input', dest='input', type=str, required=True
-                        , help="")
+    parser.add_argument('-i', '--input', dest='input', type=str, required=True,
+                        help="")
     parser.add_argument('-o', '--output', dest='output', type=str, required=True
                         , help="")
-    parser.add_argument('-d', '--direction', dest='direction', type=bool,
-                        required=False, default=True)
+    parser.add_argument('-d', '--direction', dest='direction', type=str,
+                        required=False, default='True', choices=['True', 'False'],
+                        help="")
     parser.add_argument('-m', '--method', dest='method', type=str, required=False
                         , default='bincount', choices=['bin', 'count', 'bincount'], help="")
     args = parser.parse_args()
     logger.info("Arguments parsed.")
 
-    if args.direction: # Compression
+    if args.direction == 'True': # Compression
         logger.info("Data will be compressed.")
 
         logger.debug(f"Load data in file '{args.input}'.")
