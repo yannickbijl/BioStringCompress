@@ -21,7 +21,7 @@ def _mergeBitListToByteList(bitList):
     bitList = iter(bitList)
     return [bits+next(bitList, '') for bits in bitList]
 
-def binCompress(sequence:str = "ATCG"):
+def binCompress(sequence:list = ['A', 'T', 'C', 'G']):
     bitList = []
     dictBases = _baseToIntDict()
     for character in sequence:
@@ -35,7 +35,7 @@ def binCompress(sequence:str = "ATCG"):
     return byteList
 
 
-def countCompress(sequence:str = "ATCG"):
+def countCompress(sequence:list = ['A', 'T', 'C', 'G']):
     seqList = []
     dictBases = _baseToIntDict()
     prevChar = sequence[0]
@@ -55,7 +55,7 @@ def countCompress(sequence:str = "ATCG"):
     return seqList
 
 
-def binCountCompress(sequence:str = "ATCG"):
+def binCountCompress(sequence:list = ['A', 'T', 'C', 'G']):
     bitList = []
     dictBases = _baseToIntDict()
     prevChar = sequence[0]
