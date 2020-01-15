@@ -12,26 +12,24 @@ def _check_pathdir_exist(filepath:str, create:bool = False):
 def read_binary(filename:str):
     _check_filepath_exist(filename)
     with open(filename, 'rb') as datafile:
-        pass
+        data = datafile.read()
     return data
 
 
 def read_normal(filename:str):
     _check_filepath_exist(filename)
     with open(filename, 'r') as datafile:
-        pass
+        data = datafile.read()
     return data
 
 
-def write_binary(filename:str):
+def write_binary(filename:str, data):
     _check_filepath_exist(filename, create=True)
     with open(filename, 'wb+') as datafile:
-        pass
-    return data
+        datafile.write(data)
 
 
-def write_normal(filename:str):
+def write_normal(filename:str, data):
     _check_filepath_exist(filename, create=True)
     with open(filename, 'w+') as datafile:
-        pass
-    return data
+        datafile.write(data)
