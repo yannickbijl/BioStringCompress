@@ -13,7 +13,6 @@ logger = lib_logger.start_logger()
 
 
 def compress_data(data, method):
-    logger.info(f'Data is compressed using the method "{method}".')
     if method == 'bin':
         return lib_compress.binCompress(data)
     elif method == 'count':
@@ -26,7 +25,6 @@ def compress_data(data, method):
 
 
 def decompress_data(data, method:str):
-    logger.info(f'Data is decompressed using the method "{method}".')
     if method == 'bin':
         return lib_decompress.binDecompress(data)
     elif method == 'count':
@@ -66,9 +64,9 @@ def main():
 
         logger.debug(f"Write compressed data to file '{args.output}'.")
         if args.method in ['bin', 'bincount']:
-            lib_data.write_binary(out_data, args.output)
+            lib_data.write_binary(args.output, out_data)
         else:
-            lib_data.write_normal(out_data, args.output)
+            lib_data.write_normal(args.output, out_data)
         logger.info("Compressed data is written.")
 
     else: # Decompression
@@ -86,7 +84,7 @@ def main():
         logger.info("Data is decompressed.")
 
         logger.debug(f"Write decompressed data to file '{args.output}'.")
-        lib_data.write_normal(out_data, args.output)
+        lib_data.write_normal(args.output, out_data)
         logger.info("Decompressed data is written.")
 
     logger.info("Successfully excecuted program 'BioStringCompress'.")
