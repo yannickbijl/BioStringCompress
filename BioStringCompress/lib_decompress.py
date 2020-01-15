@@ -1,10 +1,10 @@
-def a():
+def binDecompress():
     return 1
 
 
-def b():
+def countDecompress():
     return 1
 
 
-def c():
+def binCountDecompress():
     return 1

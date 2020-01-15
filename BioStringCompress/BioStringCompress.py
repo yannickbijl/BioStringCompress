@@ -14,25 +14,25 @@ logger = lib_logger.start_logger()
 
 def compress_data(data, method):
     logger.info(f'Data is compressed using the method "{method}".')
-    if method == 'a':
-        return lib_compress.a(data)
-    elif method == 'b':
-        return lib_compress.b(data)
-    elif method == 'c':
-        return lib_compress.c(data)
+    if method == 'bin':
+        return lib_compress.binCompress(data)
+    elif method == 'count':
+        return lib_compress.countCompress(data)
+    elif method == 'bincount':
+        return lib_compress.binCountCompress(data)
     else:
         logger.debug(f'The method "{method}" has not been implemented for compression.')
         raise lib_exceptions.FeatureNotImplemented(f'The method "{method}" has not been implemented for compression.')
 
 
-def decompress_data(data, method):
+def decompress_data(data, method:str):
     logger.info(f'Data is decompressed using the method "{method}".')
-    if method == 'a':
-        return lib_decompress.method1(data)
-    elif method == 'b':
-        return lib_decompress.method2(data)
-    elif method == 'c':
-        return lib_decompress.method3(data)
+    if method == 'bin':
+        return lib_decompress.binDecompress(data)
+    elif method == 'count':
+        return lib_decompress.countDecompress(data)
+    elif method == 'bincount':
+        return lib_decompress.binCountDecompress(data)
     else:
         logger.debug(f'The method "{method}" has not been implemented for decompression.')
         raise lib_exceptions.FeatureNotImplemented(f'The method "{method}" has not been implemented for compression.')
@@ -49,18 +49,18 @@ def main():
     parser.add_argument('-d', '--direction', dest='direction', type=bool,
                         required=False, default=True)
     parser.add_argument('-m', '--method', dest='method', type=str, required=False
-                        , default='a', choices=['a', 'b', 'c'], help="")
+                        , default='bincount', choices=['bin', 'count', 'bincount'], help="")
     args = parser.parse_args()
 
     if args.direction: # Compression
         in_data = lib_data.read_normal(args.input)
         out_data = compress_data(in_data, args.method)
-        if args.method in ['a', 'c']:
+        if args.method in ['bin', 'bincount']:
             lib_data.write_binary(out_data, args.output)
         else:
             lib_data.write_normal(out_data, args.output)
     else: # Decompression
-        if args.method in ['a', 'c']:
+        if args.method in ['bin', 'bincount']:
             in_data = lib_data.read_binary(args.input)
         else:
             in_data = lib_data.read_normal(args.input)

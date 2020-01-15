@@ -12,7 +12,7 @@ def bitConversion(intConvBase: int):
     return '{:04b}'.format(intConvBase)
 
 
-def method1(sequence:str = "ATCG"):
+def binCompress(sequence:str = "ATCG"):
     bitList = []
     dictBases = charToIntDict()
     for character in sequence:
@@ -23,7 +23,7 @@ def method1(sequence:str = "ATCG"):
     return bitList # Each 2 items in bitList forms a byte.
 
 
-def method2(sequence:str = "ATCG"):
+def countCompress(sequence:str = "ATCG"):
     seqList = []
     dictBases = strToIntDict()
     prevChar = seq[0]
@@ -39,7 +39,7 @@ def method2(sequence:str = "ATCG"):
     return seqList # Each 2 items in seqList forms a pair. First item is the base, and second item is the count.
 
 
-def method3(sequence:str = "ATCG"):
+def binCountCompress(sequence:str = "ATCG"):
     bitList = []
     dictBases = strToIntDict()
     prevChar = seq[0]
