@@ -1,4 +1,5 @@
 import os
+import re
 
 def _check_pathdir_exist(filepath:str, create:bool = False):
     dirpath = os.path.dirname(filepath)
@@ -13,13 +14,13 @@ def read_binary(filename:str):
     _check_pathdir_exist(filename)
     with open(filename, 'rb') as datafile:
         data = datafile.read()
-    return data
+    return [byte for byte in data]
 
 def read_normal(filename:str):
     _check_pathdir_exist(filename)
     with open(filename, 'r') as datafile:
         data = datafile.read()
-    return data
+    return re.findall('.*?[ACGTRYSWKMBDHVN-]', data)
 
 
 def write_binary(filename:str, data:list):
