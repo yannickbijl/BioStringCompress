@@ -1,31 +1,43 @@
-def _charToIntDict():
+def _baseToIntDict():
     allBases = ["A", "C", "G", "T", "R", "Y", "S", "W", "K", "M", "B", "D", 
                 "H", "V", "N", "-"]
     d = dict([(y,x) for x,y in enumerate(sorted(set(allBases)))])
     # d = {'-': 0, 'A': 1, 'B': 2, 'C': 3, 'D': 4, 'G': 5, 'H': 6, 'K': 7, 'M': 8, 'N': 9, 'R': 10, 'S': 11, 'T': 12, 'V': 13, 'W': 14, 'Y': 15}
     return d
 
-def _charToInt(character:str, dictBases:dict):
+def _baseToInt(character:str, dictBases:dict):
     return dictBases[character]
 
-def _bitConversion(intConvBase: int):
+def _intToBitConversion(intConvBase: int):
     return '{:04b}'.format(intConvBase)
 
+def _byteToIntConversion(bits:str):
+    result = 0
+    for bit in bits:
+        result = (result << 1) | int(bit)
+    return result
+
+def _mergeBitListToByteList(bitList):
+    bitList = iter(bitList)
+    return [bits+next(bitList, '') for bits in bitList]
 
 def binCompress(sequence:str = "ATCG"):
     bitList = []
-    dictBases = _charToIntDict()
+    dictBases = _baseToIntDict()
     for character in sequence:
-        intBase = _charToInt(character, dictBases)
-        bitList.append(_bitConversion(intBase))
+        intBase = _baseToInt(character, dictBases)
+        bitList.append(_intToBitConversion(intBase))
     if (len(bitList) % 2) > 0: # Add padding if necessary with a gap.
         bitList.append(_bitConversion(0))
-    return bitList # Each 2 items in bitList forms a byte.
+    # Each 2 items in bitList forms a byte.
+    byteList = _mergeBitListToByteList(bitList)
+    byteList = [_byteToIntConversion(byte) for byte in byteList]
+    return byteList
 
 
 def countCompress(sequence:str = "ATCG"):
     seqList = []
-    dictBases = _charToIntDict()
+    dictBases = _baseToIntDict()
     prevChar = sequence[0]
     count = 0 
     for character in sequence:
@@ -33,24 +45,35 @@ def countCompress(sequence:str = "ATCG"):
             count += 1
         else:
             seqList.append(prevChar)
-            seqList.append(count)
+            seqList.append(str(count))
             prevChar = character
             count = 1
-    return seqList # Each 2 items in seqList forms a pair. First item is the base, and second item is the count.
+    # Make sure last bases are written
+    seqList.append(prevChar)
+    seqList.append(str(count))
+    # Each 2 items in seqList forms a pair. First item is the base, and second item is the count.
+    return seqList
 
 
 def binCountCompress(sequence:str = "ATCG"):
     bitList = []
-    dictBases = _charToIntDict()
+    dictBases = _baseToIntDict()
     prevChar = sequence[0]
     count = 0 
     for character in sequence:
         if prevChar == character and count < 17: # max of 16 to work with bits.
             count += 1
         else:
-            intBase = _charToInt(prevChar, dictBases)
-            bitList.append(_bitConversion(intBase))
-            bitList.append(_bitConversion(count-1))
+            intBase = _baseToInt(prevChar, dictBases)
+            bitList.append(_intToBitConversion(intBase))
+            bitList.append(_intToBitConversion(count-1))
             prevChar = character
             count = 1
-    return bitList # Each 2 items in bitList form a byte. First item is the base, and second item is the count.
+    # Make sure last bases are written
+    intBase = _baseToInt(prevChar, dictBases)
+    bitList.append(_intToBitConversion(intBase))
+    bitList.append(_intToBitConversion(count-1))
+    # Each 2 items in bitList form a byte. First item is the base, and second item is the count.
+    byteList = _mergeBitListToByteList(bitList)
+    byteList = [_byteToIntConversion(byte) for byte in byteList]
+    return byteList 
