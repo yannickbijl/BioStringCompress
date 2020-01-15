@@ -22,12 +22,13 @@ def read_normal(filename:str):
     return data
 
 
-def write_binary(filename:str, data):
+def write_binary(filename:str, data:list):
     _check_pathdir_exist(filename, create=True)
     with open(filename, 'wb+') as datafile:
-        datafile.write(data)
+        datafile.write(bytes(data))
 
-def write_normal(filename:str, data):
+def write_normal(filename:str, data:list):
     _check_pathdir_exist(filename, create=True)
+    data = "".join(data)
     with open(filename, 'w+') as datafile:
         datafile.write(data)
