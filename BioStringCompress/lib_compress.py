@@ -25,8 +25,8 @@ def binCompress(sequence:str = "ATCG"):
 
 def countCompress(sequence:str = "ATCG"):
     seqList = []
-    dictBases = _strToIntDict()
-    prevChar = seq[0]
+    dictBases = _charToIntDict()
+    prevChar = sequence[0]
     count = 0 
     for character in sequence:
         if prevChar == character:
@@ -41,8 +41,8 @@ def countCompress(sequence:str = "ATCG"):
 
 def binCountCompress(sequence:str = "ATCG"):
     bitList = []
-    dictBases = _strToIntDict()
-    prevChar = seq[0]
+    dictBases = _charToIntDict()
+    prevChar = sequence[0]
     count = 0 
     for character in sequence:
         if prevChar == character and count < 17: # max of 16 to work with bits.
