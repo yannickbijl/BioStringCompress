@@ -51,21 +51,43 @@ def main():
     parser.add_argument('-m', '--method', dest='method', type=str, required=False
                         , default='bincount', choices=['bin', 'count', 'bincount'], help="")
     args = parser.parse_args()
+    logger.info("Arguments parsed.")
 
     if args.direction: # Compression
+        logger.info("Data will be compressed.")
+
+        logger.debug(f"Load data in file '{args.input}'.")
         in_data = lib_data.read_normal(args.input)
+        logger.info("Data loaded.")
+
+        logger.debug(f"Compress data using method '{args.method}'.")
         out_data = compress_data(in_data, args.method)
+        logger.info("Data is compressed.")
+
+        logger.debug(f"Write compressed data to file '{args.output}'.")
         if args.method in ['bin', 'bincount']:
             lib_data.write_binary(out_data, args.output)
         else:
             lib_data.write_normal(out_data, args.output)
+        logger.info("Compressed data is written.")
+
     else: # Decompression
+        logger.info("Data will be decompressed.")
+
+        logger.debug(f"Load data in file '{args.input}'.")
         if args.method in ['bin', 'bincount']:
             in_data = lib_data.read_binary(args.input)
         else:
             in_data = lib_data.read_normal(args.input)
+        logger.info("Data loaded.")
+
+        logger.debug(f"Decompress data using method '{args.method}'.")
         out_data = decompress_data(in_data, args.method)
+        logger.info("Data is decompressed.")
+
+        logger.debug(f"Write decompressed data to file '{args.output}'.")
         lib_data.write_normal(out_data, args.output)
+        logger.info("Decompressed data is written.")
 
     logger.info("Successfully excecuted program 'BioStringCompress'.")
 
