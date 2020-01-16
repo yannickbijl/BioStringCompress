@@ -22,8 +22,21 @@ def binDecompress(data:list = [28, 53]) -> list:
 
 
 def countDecompress(data:list = ['1A', '1T', '1C', '1G']) -> list:
-    print(data)
+    seqList = []
+    dictBases = _intToBaseDict()
+    for countbase in data:
+        base = countbase[-1]
+        count = int(countbase[:-1])
+        seqList.extend([base] * count)
+    return seqList
 
 
 def binCountDecompress(data:list = [1, 12, 3, 5]) -> list:
-    print(data)
+    seqList = []
+    dictBases = _intToBaseDict()
+    for byte in data:
+        byte = _intToBitConversion(byte)
+        count = int(byte[:4], 2) + 1
+        base = _intToBase(int(byte[4:], 2), dictBases)
+        seqList.extend([base] * count)
+    return seqList
