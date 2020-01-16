@@ -12,7 +12,7 @@ import lib_logger
 logger = lib_logger.start_logger()
 
 
-def compress_data(data, method):
+def compress_data(data, method) -> list:
     if method == 'bin':
         return lib_compress.binCompress(data)
     elif method == 'count':
@@ -24,7 +24,7 @@ def compress_data(data, method):
         raise lib_exceptions.FeatureNotImplemented(f'The method "{method}" has not been implemented for compression.')
 
 
-def decompress_data(data, method:str):
+def decompress_data(data, method:str) -> list:
     if method == 'bin':
         return lib_decompress.binDecompress(data)
     elif method == 'count':

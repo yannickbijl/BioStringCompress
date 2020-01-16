@@ -10,13 +10,13 @@ def _check_pathdir_exist(filepath:str, create:bool = False):
             raise FileNotFoundError(f'{dirpath} does not exist.')
 
 
-def read_binary(filename:str):
+def read_binary(filename:str) -> list:
     _check_pathdir_exist(filename)
     with open(filename, 'rb') as datafile:
         data = datafile.read()
     return [byte for byte in data]
 
-def read_normal(filename:str):
+def read_normal(filename:str) -> list:
     _check_pathdir_exist(filename)
     with open(filename, 'r') as datafile:
         data = datafile.read()
