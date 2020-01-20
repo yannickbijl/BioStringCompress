@@ -26,7 +26,6 @@ def binCompress(sequence:list = ['A', 'T', 'C', 'G']) -> list:
     dictBases = _baseToIntDict()
     for character in sequence:
         intBase = _baseToInt(character, dictBases)
-        print(type(_intToBitConversion(intBase)))
         bitList.append(_intToBitConversion(intBase))
     if (len(bitList) % 2) > 0: # Add padding if necessary with a gap.
         bitList.append(_bitConversion(0))
