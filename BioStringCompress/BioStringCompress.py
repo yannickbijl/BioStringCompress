@@ -9,10 +9,10 @@ import lib_exceptions
 
 # load logger and set as global variable.
 import lib_logger
-logger = lib_logger.start_logger()
+logger = lib_logger.startLogger()
 
 
-def compress_data(data, method) -> list:
+def compressData(data, method) -> list:
     if method == 'bin':
         return lib_compress.binCompress(data)
     elif method == 'count':
@@ -24,7 +24,7 @@ def compress_data(data, method) -> list:
         raise lib_exceptions.FeatureNotImplemented(f'The method "{method}" has not been implemented for compression.')
 
 
-def decompress_data(data, method:str) -> list:
+def decompressData(data, method:str) -> list:
     if method == 'bin':
         return lib_decompress.binDecompress(data)
     elif method == 'count':
@@ -56,18 +56,18 @@ def main():
         logger.info("Data will be compressed.")
 
         logger.debug(f"Load data in file '{args.input}'.")
-        in_data = lib_data.read_normal(args.input)
+        inputData = lib_data.readNormal(args.input)
         logger.info("Data loaded.")
 
         logger.debug(f"Compress data using method '{args.method}'.")
-        out_data = compress_data(in_data, args.method)
+        outputData = compressData(inputData, args.method)
         logger.info("Data is compressed.")
 
         logger.debug(f"Write compressed data to file '{args.output}'.")
         if args.method in ['bin', 'bincount']:
-            lib_data.write_binary(args.output, out_data)
+            lib_data.writeBinary(args.output, outputData)
         else:
-            lib_data.write_normal(args.output, out_data)
+            lib_data.writeNormal(args.output, outputData)
         logger.info("Compressed data is written.")
 
     else: # Decompression
@@ -75,17 +75,17 @@ def main():
 
         logger.debug(f"Load data in file '{args.input}'.")
         if args.method in ['bin', 'bincount']:
-            in_data = lib_data.read_binary(args.input)
+            inputData = lib_data.readBinary(args.input)
         else:
-            in_data = lib_data.read_normal(args.input)
+            inputData = lib_data.readNormal(args.input)
         logger.info("Data loaded.")
 
         logger.debug(f"Decompress data using method '{args.method}'.")
-        out_data = decompress_data(in_data, args.method)
+        outputData = decompressData(inputData, args.method)
         logger.info("Data is decompressed.")
 
         logger.debug(f"Write decompressed data to file '{args.output}'.")
-        lib_data.write_normal(args.output, out_data)
+        lib_data.writeNormal(args.output, outputData)
         logger.info("Decompressed data is written.")
 
     logger.info("Successfully excecuted program 'BioStringCompress'.")
