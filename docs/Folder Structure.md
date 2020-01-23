@@ -9,15 +9,15 @@ SeqCompress
 |     | Folder Structure.md
 |
 └─── SeqCompress # Actual code (main folder is mostly for calling)
-|     | libs.py # Exposes all lib python files.
-|     | SeqCompress.py
-|     |
-|     └─── libs # All/most functional code
-|           | lib_compress_algorithms.py
-|           | lib_decompress_algorithms.py
-|           | lib_logging.py
-|           | lib_sequence_data.py
+|     | BioStringCompress.py
+|     | lib_compress.py
+|     | lib_data.py
+|     | lib_decompress.py
+|     | lib_exceptions.py
+|     | lib_logger.py
 |
 └─── tests # Tests for code
-      | test_compress_algorithms.py
+      | test_lib_compress.py
+      | test_lib_data.py
+      | test_lib_decompress.py
 ```
