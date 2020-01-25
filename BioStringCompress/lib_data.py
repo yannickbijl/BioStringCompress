@@ -1,6 +1,9 @@
 import os
 import re
 
+def translateDNAToRNA(sequence:list) -> list:
+    return ['T' if base=='U' else base for base in sequence]
+
 def _checkPathdirExist(filepath:str, create:bool = False):
     dirpath = os.path.dirname(filepath)
     if not os.path.isdir(dirpath) and dirpath != "":
@@ -19,7 +22,7 @@ def readBinary(filename:str) -> list:
 def readNormal(filename:str) -> list:
     _checkPathdirExist(filename)
     with open(filename, 'r') as datafile:
-        data = datafile.read()
+        data = datafile.read().upper()
     return re.findall('.*?[ACGTRYSWKMBDHVN-]', data)
 
 

@@ -49,6 +49,8 @@ def main():
                         help="")
     parser.add_argument('-m', '--method', dest='method', type=str, required=False
                         , default='bincount', choices=['bin', 'count', 'bincount'], help="")
+    parser.add_argument('-t', '--type', dest='type', type=str, required=False,
+                        default='DNA', choices=['DNA', 'RNA'], help="")
     args = parser.parse_args()
     logger.info("Arguments parsed.")
 
@@ -58,6 +60,9 @@ def main():
         logger.debug(f"Load data in file '{args.input}'.")
         inputData = lib_data.readNormal(args.input)
         logger.info("Data loaded.")
+
+        if args.type == 'RNA':
+            inputData = lib_data.translateDNAToRNA(inputData)
 
         logger.debug(f"Compress data using method '{args.method}'.")
         outputData = compressData(inputData, args.method)
@@ -83,6 +88,9 @@ def main():
         logger.debug(f"Decompress data using method '{args.method}'.")
         outputData = decompressData(inputData, args.method)
         logger.info("Data is decompressed.")
+
+        if args.type == 'RNA':
+            outputData = lib_data.translateDNAToRNA(outputData)
 
         logger.debug(f"Write decompressed data to file '{args.output}'.")
         lib_data.writeNormal(args.output, outputData)
