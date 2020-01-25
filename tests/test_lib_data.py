@@ -3,6 +3,12 @@ import os
 
 from BioStringCompress import lib_data
 
+def test_translatRNAToDNA():
+    assert ['A', 'T', 'T', 'C', 'G'] == lib_data.translateDNAToRNA(['A', 'U', 'U', 'C', 'G'])
+
+def test_translateDNAToRNA():
+    assert ['A', 'U', 'U', 'C', 'G'] == lib_data.translateDNAToRNA(['A', 'T', 'T', 'C', 'G'])
+
 def test__checkPathdirExist_Success(tmp_path):
     d = tmp_path / "sub"
     p = d / "simple.txt"
