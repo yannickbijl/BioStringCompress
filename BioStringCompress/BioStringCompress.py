@@ -62,7 +62,7 @@ def main():
         logger.info("Data loaded.")
 
         if args.type == 'RNA':
-            inputData = lib_data.translateDNAToRNA(inputData)
+            inputData = lib_data.translateRNAToDNA(inputData)
 
         logger.debug(f"Compress data using method '{args.method}'.")
         outputData = compressData(inputData, args.method)
