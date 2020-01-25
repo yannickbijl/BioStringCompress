@@ -33,10 +33,9 @@ This last method takes a mixed approach of the previous two methods. It compress
   - [x] Update README
   - [x] Write test scripts for BSC
   - [] Experiments for effectiveness of compression methods (use filesize as measurement)
-    - [] Gene:
-    - [] Sequence Alignment:
-    - [] Long Read (NanoPore/MinION):
-    - [] Genome:
+    - [] Gene: [TNF](https://www.ncbi.nlm.nih.gov/search/all/?term=TNF) (RefSeqGene)
+    - [] Sequence Alignment (Consensus Sequence): Generate self.
+    - [] Genome: [human genome GRCh38.p13](https://www.ncbi.nlm.nih.gov/search/all/?term=human%20genome) (Select `Genomic FASTA` for File Type)
   - [] Plot results of experiments
   - [] Write report/article
 
