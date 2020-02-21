@@ -32,11 +32,13 @@ This last method takes a mixed approach of the previous two methods. It compress
 ## TODO:
   - [x] Update README
   - [x] Write test scripts for BSC
-  - [] Experiments for effectiveness of compression methods (use filesize as measurement)
-    - [] Gene: [TNF](https://www.ncbi.nlm.nih.gov/search/all/?term=TNF) (RefSeqGene)
+  - [] Experiments for effectiveness of compression methods
+    - [x] Gene: [TNF](https://www.ncbi.nlm.nih.gov/search/all/?term=TNF) (RefSeqGene)
     - [] Sequence Alignment (Consensus Sequence): Generate self.
     - [] Genome: [human genome GRCh38.p13](https://www.ncbi.nlm.nih.gov/search/all/?term=human%20genome) (Select `Genomic FASTA` for File Type)
   - [] Plot results of experiments
+    - measure compression factor (filesize)
+    - measure decompression accuracy (reconstruction)
   - [] Write report/article
 
 ## Papers

@@ -28,7 +28,7 @@ def binCompress(sequence:list = ['A', 'T', 'C', 'G']) -> list:
         intBase = _baseToInt(character, dictBases)
         bitList.append(_intToBitConversion(intBase))
     if (len(bitList) % 2) > 0: # Add padding if necessary with a gap.
-        bitList.append(_bitConversion(0))
+        bitList.append(_intToBitConversion(0))
     # Each 2 items in bitList forms a byte.
     byteList = _mergeBitListToByteList(bitList)
     byteList = [_byteToIntConversion(byte) for byte in byteList]
@@ -61,7 +61,7 @@ def binCountCompress(sequence:list = ['A', 'T', 'C', 'G']) -> list:
     prevChar = sequence[0]
     count = 0 
     for character in sequence:
-        if prevChar == character and count < 17: # max of 16 to work with bits.
+        if prevChar == character and count < 16: # max of 16 to work with bits.
             count += 1
         else:
             intBase = _baseToInt(prevChar, dictBases)
