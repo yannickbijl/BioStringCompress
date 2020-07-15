@@ -1,11 +1,12 @@
 ```
-SeqCompress
+BioStringCompress
 | README.md
 |
 └─── configurations # All 'default' configuration files
 |     | logger.conf
 |
 └─── docs # All non-README documentation
+|     | BioStringCompress.pdf
 |     | Folder Structure.md
 |
 └─── SeqCompress # Actual code (main folder is mostly for calling)
