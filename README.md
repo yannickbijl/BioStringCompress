@@ -31,8 +31,7 @@ Biological sequences are not entirely random, with many repeating sections. The 
 This last method takes a mixed approach of the previous two methods. It compresses the sequence in the same manner as `count`, with the number being a maximum of 16, as this can still be stored into 4 bits. The number and base are both converted into bits. As each base is accompanied with a number, there is no need to add additional bits.
 
 ## Paper
-<embed src="/docs/BioStringCompress.pdf" type="application/pdf">
-<object data="/docs/BioStringCompress.pdf" type="application/pdf" width="100%"></object>
+[embed]https://github.com/yannickbijl/BioStringCompress/blob/master/docs/BioStringCompress.pdf[/embed]
 
 ## Acknowledgement
 This project was done in collaboration with [Olga Veth](https://github.com/OPVeth).
