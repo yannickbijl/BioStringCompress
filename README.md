@@ -1,5 +1,5 @@
 # BioStringCompress (BSC)
-BioStringCompress is a commandline tool for efficient compression of biological sequences (DNA/for long term storage.
+BioStringCompress is a commandline tool for efficient compression of biological sequences (DNA/RNA) for long term storage.
 
 ## Usage
 
